@@ -21,7 +21,6 @@ def ova_gradient_descent(X, Y, eta, epochs, percent):
     import numpy as np
     import pandas as pd
     import random
-    from sklearn.metrics import confusion_matrix
     
     m = len(X)
     test_index = list(pd.Series(random.sample(list(np.arange(0, m)), round(m * percent / 100))).sort_values())
@@ -105,7 +104,6 @@ def ovo_gradient_descent(X, Y, eta, epochs, percent):
     import numpy as np
     import pandas as pd
     import random
-    from sklearn.metrics import confusion_matrix
     
     m = len(X)
     test_index = list(pd.Series(random.sample(list(np.arange(0, m)), round(m * percent / 100))).sort_values())
@@ -154,7 +152,7 @@ def ovo_gradient_descent(X, Y, eta, epochs, percent):
     yc02 = (Ytrain02 == 0).astype(np.int32).reshape(-1,1)
     yc12 = (Ytrain12 == 1).astype(np.int32).reshape(-1,1)
 
-    ytest01 = (Ytest01 == 0).astype(np.int32).reshape(-1,1)+
+    ytest01 = (Ytest01 == 0).astype(np.int32).reshape(-1,1)
     ytest02 = (Ytest02 == 0).astype(np.int32).reshape(-1,1)
     ytest12 = (Ytest12 == 1).astype(np.int32).reshape(-1,1)
     
@@ -242,17 +240,6 @@ def ovo_gradient_descent(X, Y, eta, epochs, percent):
     #Y_predict = np.argmax(Prob, axis=-1)    
 
     return theta, test_index, train_index, Y_predict, J_log, Prob, Y_test, Y_c
-
-
-
-
-
-
-
-
-
-
-
 
 
 
